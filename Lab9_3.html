@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LED Control</title>
+    <script>
+        function toggleLED(led, status) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    console.log(this.responseText);
+                }
+            };
+            xhttp.open("GET", "/" + led + "/" + status, true);
+            xhttp.send();
+        }
+    </script>
+</head>
+<body>
+    <h1>LED Control</h1>
+    <button onclick="toggleLED('led1', 'on')">Turn On LED 1</button>
+    <button onclick="toggleLED('led1', 'off')">Turn Off LED 1</button>
+    <button onclick="toggleLED('led2', 'on')">Turn On LED 2</button>
+    <button onclick="toggleLED('led2', 'off')">Turn Off LED 2</button>
+</body>
+</html>
